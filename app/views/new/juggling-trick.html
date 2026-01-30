@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "How many balls can you juggle?" %}
+{% set pageName = "What is your most impressive juggling trick?" %}
 
 {% block beforeContent %}
     {{ govukBackLink({
@@ -15,30 +15,16 @@
   <div class="govuk-grid-column-two-thirds">
     <form novalidate method="post">
 
-      {{ govukRadios({
-        name: "[new][numberOfBalls]",
-        fieldset: {
-          legend: {
-            text: pageName,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
+      {{ govukCharacterCount({
+        name: "[new][trick]",
+        id: "[new][trick]",
+        label: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-label--l"
         },
-        value: data.new.numberOfBalls,
-        items: [
-          {
-            value: "3 or more",
-            text: "3 or more"
-          },
-          {
-            value: "1 or 2",
-            text: "1 or 2"
-          },
-          {
-            value: "None I cannot juggle",
-            text: "None I cannot juggle"
-          }
-        ]
+        maxlength: 200,
+        value: data.new.trick
       }) }}
 
 
