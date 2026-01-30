@@ -15,3 +15,6 @@ router.post('/new/code', (req, res) => {
    res.redirect('/new/name') 
 })
 
+router.post('/new/country', (req, res) => {
+   res.redirect('/new/juggling-balls') 
+})
