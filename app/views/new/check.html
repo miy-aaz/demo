@@ -1,0 +1,153 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check details and send your application" %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {% set jugglingObjects %}
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in data.new.objects %}
+        <li>
+          {{item}}
+          {% if item == 'Other' %}
+            - {{data.new.otherObject}}
+
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Your email address"
+            },
+            value: {
+              text: data.new.emailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "/new/email-address",
+                  text: "Change",
+                  visuallyHiddenText: "Your email address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Your name"
+            },
+            value: {
+              text: data.new.firstName + ' ' + data.new.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/new/name",
+                  text: "Change",
+                  visuallyHiddenText: "Your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Your country"
+            },
+            value: {
+              text: data.new.country
+            },
+            actions: {
+              items: [
+                {
+                  href: "/new/country",
+                  text: "Change",
+                  visuallyHiddenText: "Your country"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How many balls can you juggle?"
+            },
+            value: {
+              html: data.new.numberOfBalls
+            },
+            actions: {
+              items: [
+                {
+                  href: "/new/juggling-balls",
+                  text: "Change",
+                  visuallyHiddenText: "Number of balls you can juggle"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your most impressive juggling trick?"
+            },
+            value: {
+              text: data.new.trick | nl2br
+            },
+            actions: {
+              items: [
+                {
+                  href: "/new/juggling-trick",
+                  text: "Change",
+                  visuallyHiddenText: "Juggling trick"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What objects can you juggle?"
+            },
+            value: {
+              html: jugglingObjects
+            },
+            actions: {
+              items: [
+                {
+                  href: "/new/juggling-objects",
+                  text: "Change",
+                  visuallyHiddenText: "Your country"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p>By submitting this application you're confirming that, to the best of your knowledge, the details you're providing are correct.</p>
+
+
+
+      {{ govukButton({
+        text: "Accept and send application"
+      }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}
+

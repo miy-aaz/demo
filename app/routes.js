@@ -7,12 +7,17 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 
+
 router.post('/new/email-address', (req, res) => {
    res.redirect('/new/code') 
 })
 
 router.post('/new/code', (req, res) => {
    res.redirect('/new/name') 
+})
+
+router.post('/new/name', (req, res) => {
+   res.redirect('/new/country') 
 })
 
 router.post('/new/country', (req, res) => {
@@ -29,4 +34,8 @@ router.post('/new/juggling-balls', (req, res) => {
 
 router.post('/new/juggling-trick', (req, res) => {
    res.redirect('/new/juggling-objects') 
+})
+
+router.post('/new/juggling-objects', (req, res) => {
+   res.redirect('/new/check') 
 })
