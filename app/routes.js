@@ -9,7 +9,11 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 
 router.post('/new/email-address', (req, res) => {
-   res.redirect('/new/code') 
+   if(req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+   } else {
+      res.redirect('/new/code') 
+   }
 })
 
 router.post('/new/code', (req, res) => {
@@ -17,11 +21,19 @@ router.post('/new/code', (req, res) => {
 })
 
 router.post('/new/name', (req, res) => {
+   if(req.query.returnUrl){
+      res.redirect(req.query.returnUrl)
+   } else {
    res.redirect('/new/country') 
+   }
 })
 
 router.post('/new/country', (req, res) => {
+   if(req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+   } else {
    res.redirect('/new/juggling-balls') 
+   }
 })
 
 router.post('/new/juggling-balls', (req, res) => {
