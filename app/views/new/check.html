@@ -140,10 +140,12 @@
       <p>By submitting this application you're confirming that, to the best of your knowledge, the details you're providing are correct.</p>
 
 
-
-      {{ govukButton({
+      <form novalidate method="post">
+         {{ govukButton({
         text: "Accept and send application"
       }) }}
+      </form>
+      
 
 
   </div>
