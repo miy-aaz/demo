@@ -2,13 +2,19 @@
 
 {% set pageName = "Accessibility statement" %}
 
+{% set accessibilityContent %}
+
+{% endset %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l"> {{ pageName }} </h1>
-    <p>We are accessible.</p>
+    {% set accessibilityContent %}
 
+    {% endset %}
+
+    {{accessibilityContent | govukMarkdown({headingsStartWith: 'h2'})}}
   </div>
 </div>
 
